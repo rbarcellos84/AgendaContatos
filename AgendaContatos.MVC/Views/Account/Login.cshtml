@@ -1,0 +1,50 @@
+﻿@** modelo de dados para classe **@
+@model AgendaContatos.MVC.Models.AccountLoginModel
+@{
+    Layout = "~/Views/Shared/_AcconutLayout.cshtml";
+}
+<div class="card-body">
+    <div class="text-center mb-3">
+        <img src="https://kinsta.com/pt/wp-content/uploads/sites/3/2019/06/que-e-o-github-1024x512.png" class="img-fluid" width="150" height="300"/>
+        <h5>Acesso ao sistema</h5>
+        <p>Entre com suas credenciais para acessar a agenda.</p>
+    </div>
+    @** Codigo Razor **@
+    @using(Html.BeginForm())
+    {
+        <div class="mb-3">
+            <label>Entre com seu e-mail:</label>
+            @Html.TextBoxFor(model => model.Email, new { @class="form-control" })
+            <div>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="mb-3">
+                <label>Entre com sua senha:</label>
+                @Html.PasswordFor(model => model.Senha, new { @class="form-control" })
+                <div>
+                    @Html.ValidationMessageFor(model => model.Senha)
+                </div>
+            </div>
+            <div class="text-center">
+                Esqueceu sua senha.
+                <a href="/Account/PasswordRecover">
+                    <strong>Clique aqui!</strong>
+                </a>
+            </div>
+        </div>
+        <div class="mb-3 d-grid">
+            <input type="submit" class="btn btn-success" value="Acessar Agenda"/>
+        </div>
+        <div class="text-center">
+            Não possui um cadastro?
+            <a href="/Account/Register">
+                <strong>Cadastre-se aqui!</strong>
+            </a>
+        </div>
+        <div class="text-center">
+            <strong>@TempData["Mensagem"]</strong>
+        </div>
+    }
+</div>

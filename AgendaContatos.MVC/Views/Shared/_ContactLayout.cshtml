@@ -1,0 +1,86 @@
+﻿@using AgendaContatos.MVC.Models
+@using Newtonsoft.Json
+@{
+    Layout = null;
+    var json = User.Identity.Name;
+    var authenticationModel = JsonConvert.DeserializeObject<AuthenticationModel>(json);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Agenda de Cadastros</title>
+    <!--Folha de estilo-->
+    <link rel="stylesheet" href="~/css/bootstrap.css"/>
+    <link rel="stylesheet" href="~/css/style.css"/>
+    <link rel="stylesheet" href="~/css/jquery.dataTables.min.css"/>
+</head>
+<body class="bg-light">
+    <!--
+        <div style="text-align:right">
+            <label style="text-align:right">@authenticationModel.Nome</label>&nbsp&nbsp&nbsp&nbsp&nbsp<label style="text-align:right">@authenticationModel.Email</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+        </div>
+    -->
+    <!--menu navbar-->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/Contact/Home">Agenda de Contatos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/Contact/Register">Cadastrar Contatos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Contact/Search">Consultar Contatos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/User/Edition">Dados do Usuário</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+              <div class="text-white">
+                  <div>
+                      <small>@authenticationModel.Nome</small>
+                  </div>
+                  <div style="margin-top: -10px!important">
+                      <small>@authenticationModel.Email</small>
+                  </div>
+              </div>
+              &nbsp&nbsp&nbsp&nbsp&nbsp
+              <a href="/Contact/Logout" class="btn btn-dark">
+                  Logout
+              </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!--area da pagina-->
+    <!--Mensagem da alerta-->
+    @if (TempData["Mensagem"] != null)
+    {
+        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+            <strong>@TempData["Mensagem"]</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+        </div>
+    }
+    <div class="container mt-3">
+        <!--local de entrada da pagina-->
+        @RenderBody()
+    </div>
+    <!--arquivo de script-->
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery-3.6.4.min.js"></script>
+    <script src="~/js/jquery.dataTables.min.js"></script>
+    <!---->
+    <script>
+        var table = new DataTable('#tabela', {
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json',
+                },
+            });
+    </script>
+</body>
+</html>

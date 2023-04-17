@@ -1,0 +1,1 @@
+Tecnologia que implementa o padrão MVC, no padrão Model, View e Controller. Utilizando os recursos Web ASP.NET Core, AspNet.MVC, AspNet.Razor, Bootstrap, Json, JQuery, Dapper. Com as funcionalidades cadastro, consulta, edição e exclusão. Controle de acesso, Cookei e envio de e-mail e recuperação de senha.

@@ -1,0 +1,53 @@
+﻿@** modelo de dados para classe **@
+@model List<AgendaContatos.MVC.Models.ContactSearchModel>
+@{
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+<h5>Consulta de Contatos</h5>
+<p>Listagem de contatos cadastrados na sua agenda sua agenda</p>
+<hr />
+<br />
+<table id="tabela" class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone1</th>
+            <th>Telefone2</th>
+            <th>Operacao</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Nome</td>
+                <td>@c.Email</td>
+                <td>@c.Telefone1</td>
+                <td>@c.Telefone2</td>
+                <td>
+                    <a href="/Contact/Edition?id=@c.IdContato" class="btn btn-sm btn-success">
+                        Editar
+                    </a>
+                    <a href="/Contact/Delete?id=@c.IdContato" class="btn btn-sm btn-success">
+                        Excluir
+                    </a>
+                    <!--
+                        <a href="/Contact/Delete?id=@c.IdContato" 
+                        onclick="return confirm('Deseja realmente excluir o contato');"
+                        class="btn btn-sm btn-success">
+                        Excluir
+                        </a>
+                    -->
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">
+                Quantidade de registro: @Model.Count
+            </td>
+        </tr>
+    </tfoot>
+</table>

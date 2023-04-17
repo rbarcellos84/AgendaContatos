@@ -1,0 +1,58 @@
+﻿@** modelo de dados para classe **@
+@model AgendaContatos.MVC.Models.ContactUserModel
+@{
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+<h5>Modificação de Conta</h5>
+<p>Informação do usuário</p>
+<hr />
+@** Codigo Razor **@
+@using(Html.BeginForm())
+{
+    <div>
+        @Html.HiddenFor(model => model.IdUsuario)
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label>Entre com seu nome:</label>
+            @Html.TextBoxFor(model => model.Nome, new { @class="form-control"})
+            <div>
+                @Html.ValidationMessageFor(model => model.Nome)
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label>Entre com seu e-mail:</label>
+            @Html.TextBoxFor(model => model.Email, new { @class="form-control"})
+            <div>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label>Entre com sua senha:</label>
+            @Html.PasswordFor(model => model.Senha1, new { @class="form-control" })
+            <div>
+                @Html.ValidationMessageFor(model => model.Senha1)
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label>Confirme sua senha:</label>
+            @Html.PasswordFor(model => model.Senha2, new { @class="form-control" })
+            <div>
+                @Html.ValidationMessageFor(model => model.Senha2)
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-2">
+            <div class="mb-3 d-grid">
+                <input type="submit" class="btn btn-success" value="Modificar dados"/>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,60 @@
+﻿@** modelo de dados para classe **@
+@model AgendaContatos.MVC.Models.ContactRegisterModel
+@{
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+<h5>Remover Contatos</h5>
+<p>Você realmente deseja remover o contato?</p>
+<hr />
+@** Codigo Razor **@
+@using(Html.BeginForm())
+{
+    <div>
+        @Html.HiddenFor(model => model.IdContato)
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label>* Nome do contato:</label>
+            @Html.TextBoxFor(model => model.Nome, new { @class="form-control", @disabled = true})
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label>E-mail do contato:</label>
+            @Html.TextBoxFor(model => model.Email, new { @class="form-control", @disabled = true})
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label>* Telefone 1 do contato:</label>
+            @Html.TextBoxFor(model => model.Telefone1, new { @class="form-control", @disabled = true})
+        </div>
+        <div class="col-md-3">
+            <label>Telefone 2 do contato:</label>
+            @Html.TextBoxFor(model => model.Telefone2, new { @class="form-control", @disabled = true})
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label>Observação do contato:</label>
+            @Html.TextAreaFor(model => model.Observacao, new { @class="form-control", @disabled = true})
+        </div>
+    </div>
+    <br />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <div class="mb-3 d-grid">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="submit" class="btn btn-success" value="Deletar"/>&nbsp&nbsp&nbsp&nbsp&nbsp
+                        </td>
+                        <td>
+                            <a href="/Contact/Search" class="btn btn-success">Consulta</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+}

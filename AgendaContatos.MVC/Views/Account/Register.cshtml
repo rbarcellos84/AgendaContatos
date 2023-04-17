@@ -1,0 +1,56 @@
+﻿@** modelo de dados para classe **@
+@model AgendaContatos.MVC.Models.AccountRegisterModel
+@{
+    Layout = "~/Views/Shared/_AcconutLayout.cshtml";
+}
+<div class="card-body">
+    <div class="text-center mb-3">
+        <img src="https://kinsta.com/pt/wp-content/uploads/sites/3/2019/06/que-e-o-github-1024x512.png" class="img-fluid" width="150" height="300"/>
+        <h5>Cadastro de Usuaário</h5>
+        <p>Entre com os seus dados para criação de conta.</p>
+    </div>
+    @** Codigo Razor **@
+    @using(Html.BeginForm())
+    {
+        <div class="mb-3">
+            <label>Entre com seu nome:</label>
+            @Html.TextBoxFor(model => model.Nome, new { @class="form-control" })
+            <div>
+                @Html.ValidationMessageFor(model => model.Nome)
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Entre com seu e-mail:</label>
+            @Html.TextBoxFor(model => model.Email, new { @class="form-control" })
+            <div>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Entre com sua senha:</label>
+            @Html.PasswordFor(model => model.Senha1, new { @class="form-control" })
+            <div>
+                @Html.ValidationMessageFor(model => model.Senha1)
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Confirme sua senha:</label>
+            @Html.PasswordFor(model => model.Senha2, new { @class="form-control" })
+            <div>
+                @Html.ValidationMessageFor(model => model.Senha2)
+            </div>
+        </div>
+        <div class="mb-3 d-grid">
+            <input type="submit" class="btn btn-success" value="Cadastrar Conta"/>
+        </div>
+        <div class="text-center">
+            Ja possui conta?
+            <a href="/Account/Login">
+                <strong>Acesse aqui!</strong>
+            </a>
+        </div>
+        <div class="text-center">
+            <strong>@TempData["Mensagem"]</strong>
+        </div>
+    }
+</div>

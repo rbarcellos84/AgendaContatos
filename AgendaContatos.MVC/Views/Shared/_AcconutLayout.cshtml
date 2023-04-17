@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Agenda de Cadastros</title>
+    <!--Folha de estilo-->
+    <link rel="stylesheet" href="~/css/bootstrap.css"/>
+</head>
+<body class="bg-secondary">
+    <div class="row mt-5">
+        <div class="col-md-4 offset-4">
+            <div class="card">
+                <!--local de entrada da pagina-->
+                @RenderBody()
+            </div>
+            <div class="mt-3 text-white text-center">
+                <h7>Agenda de Contatos</h7>
+            </div>
+        </div>
+    </div>
+    <!--arquivo de script-->
+    <script src="~/js/bootstrap.js"></script>
+</body>
+</html>
